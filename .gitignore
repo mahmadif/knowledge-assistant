@@ -1,0 +1,25 @@
+# Secrets & Environment Variables
+.env
+.env.*
+!.env.example
+
+# Virtual Environments
+.venv/
+venv/
+
+# Python Build & Cache Artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+
+# Local Vector Database & Data
+chroma_db/
+*.sqlite3
+
+# macOS & Editor Files
+.DS_Store
+.vscode/
