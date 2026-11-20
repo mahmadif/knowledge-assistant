@@ -1,6 +1,6 @@
 import gradio as gr
 
-from src.rag_assistant.qa import KnowledgeAssistant
+from rag_assistant.qa import KnowledgeAssistant
 
 assistant = None
 

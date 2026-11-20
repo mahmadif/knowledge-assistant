@@ -23,3 +23,5 @@ chroma_db/
 # macOS & Editor Files
 .DS_Store
 .vscode/
+
+ignores/

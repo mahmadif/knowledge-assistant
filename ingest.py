@@ -2,9 +2,9 @@ import argparse
 
 from rich.console import Console
 
-from src.rag_assistant.config import settings
-from src.rag_assistant.indexing import build_or_update_index
-from src.rag_assistant.loaders import load_confluence_documents, load_local_documents
+from rag_assistant.config import settings
+from rag_assistant.indexing import build_or_update_index
+from rag_assistant.loaders import load_confluence_documents, load_local_documents
 
 console = Console()
 
