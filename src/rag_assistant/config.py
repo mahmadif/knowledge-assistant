@@ -12,7 +12,7 @@ class Settings:
 
     # llm provider settings
     llm_provider: str = os.getenv("LLM_PROVIDER", "ollama")  # ollama (local, default) | azure
-    ollama_model: str = os.getenv("OLLAMA_MODEL", "llama3.2:3b")
+    ollama_model: str = os.getenv("OLLAMA_MODEL", "qwen2.5:3b")
     ollama_base_url: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 
     # indexing settings

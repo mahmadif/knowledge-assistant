@@ -13,6 +13,7 @@ ENV_VARS = [field.name.upper() for field in fields(config.Settings)]
 @pytest.fixture
 def reload_config(monkeypatch):
     """Reload config after controlling the environment variables it reads."""
+    monkeypatch.setattr("dotenv.load_dotenv", lambda *args, **kwargs: False)
 
     def _reload(**env):
         for name in ENV_VARS:
