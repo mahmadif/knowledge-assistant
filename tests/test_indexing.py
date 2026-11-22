@@ -1,5 +1,6 @@
 from dataclasses import replace
 from unittest.mock import MagicMock, patch
+
 import pytest
 from langchain_core.documents import Document
 
@@ -81,7 +82,10 @@ def test_build_or_update_index_resets_collection_when_requested(mock_init_store)
 @patch("rag_assistant.indexing.Chroma")
 @patch("rag_assistant.indexing.get_embedding_model")
 def test_open_vector_store_initializes_chroma_with_cosine_space(
-    mock_get_embeddings, mock_chroma, monkeypatch, tmp_path
+    mock_get_embeddings,
+    mock_chroma,
+    monkeypatch,
+    tmp_path,
 ):
     fake_embeddings = MagicMock()
     mock_get_embeddings.return_value = fake_embeddings

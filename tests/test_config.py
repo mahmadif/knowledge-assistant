@@ -37,7 +37,7 @@ def test_default_settings(reload_config):
     module = reload_config()
 
     assert module.settings.llm_provider == "ollama"
-    assert module.settings.ollama_model == "llama3.2:3b"
+    assert module.settings.ollama_model == "qwen2.5:3b"
     assert module.settings.ollama_base_url == "http://localhost:11434"
     assert module.settings.chroma_persist_dir == "./chroma_db"
     assert module.settings.embedding_model == "sentence-transformers/all-MiniLM-L6-v2"

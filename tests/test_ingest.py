@@ -1,5 +1,6 @@
 import sys
 from unittest.mock import patch
+
 import pytest
 from langchain_core.documents import Document
 
@@ -9,7 +10,9 @@ import ingest
 @patch("ingest.build_or_update_index", return_value=4)
 @patch("ingest.load_local_documents")
 def test_main_defaults_to_local_source_without_reset(
-    mock_load_local, mock_build_index, monkeypatch
+    mock_load_local,
+    mock_build_index,
+    monkeypatch,
 ):
     fake_docs = [Document(page_content="Local guide", metadata={"source": "a.md"})]
     mock_load_local.return_value = fake_docs
@@ -24,7 +27,9 @@ def test_main_defaults_to_local_source_without_reset(
 @patch("ingest.build_or_update_index", return_value=2)
 @patch("ingest.load_local_documents")
 def test_main_local_source_with_custom_path_and_reset(
-    mock_load_local, mock_build_index, monkeypatch
+    mock_load_local,
+    mock_build_index,
+    monkeypatch,
 ):
     fake_docs = [Document(page_content="Custom dir doc", metadata={"source": "b.md"})]
     mock_load_local.return_value = fake_docs
@@ -43,7 +48,9 @@ def test_main_local_source_with_custom_path_and_reset(
 @patch("ingest.build_or_update_index", return_value=7)
 @patch("ingest.load_confluence_documents")
 def test_main_confluence_source_passes_settings_and_reset(
-    mock_load_confluence, mock_build_index, monkeypatch
+    mock_load_confluence,
+    mock_build_index,
+    monkeypatch,
 ):
     fake_docs = [Document(page_content="Wiki page", metadata={"title": "Runbook"})]
     mock_load_confluence.return_value = fake_docs

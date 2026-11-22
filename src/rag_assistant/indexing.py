@@ -28,11 +28,7 @@ def split_documents(documents: list[Document]) -> list[Document]:
         chunk_overlap=settings.chunk_overlap,
         add_start_index=True,
     )
-    return [
-        chunk
-        for chunk in splitter.split_documents(documents)
-        if chunk.page_content.strip()
-    ]
+    return [chunk for chunk in splitter.split_documents(documents) if chunk.page_content.strip()]
 
 
 def _init_chroma_store() -> Chroma:
@@ -49,9 +45,7 @@ def _init_chroma_store() -> Chroma:
 
 def build_or_update_index(documents: list[Document], reset: bool = False) -> int:
     """Build or update the Chroma vector store with the provided documents."""
-    console.print(
-        f"Splitting {len(documents)} document(s) into chunks...", style="purple"
-    )
+    console.print(f"Splitting {len(documents)} document(s) into chunks...", style="purple")
     chunks = split_documents(documents)
 
     if not chunks:

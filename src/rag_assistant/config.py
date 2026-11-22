@@ -11,17 +11,13 @@ class Settings:
     """Application settings loaded from environment variables."""
 
     # llm provider settings
-    llm_provider: str = os.getenv(
-        "LLM_PROVIDER", "ollama"
-    )  # ollama (local, default) | azure
+    llm_provider: str = os.getenv("LLM_PROVIDER", "ollama")  # ollama (local, default) | azure
     ollama_model: str = os.getenv("OLLAMA_MODEL", "llama3.2:3b")
     ollama_base_url: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 
     # indexing settings
     chroma_persist_dir: str = os.getenv("CHROMA_PERSIST_DIR", "./chroma_db")
-    embedding_model: str = os.getenv(
-        "EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2"
-    )
+    embedding_model: str = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
     chunk_size: int = int(os.getenv("CHUNK_SIZE", "1000"))
     chunk_overlap: int = int(os.getenv("CHUNK_OVERLAP", "150"))
     data_dir: str = os.getenv("DATA_DIR", "./data")
@@ -55,10 +51,7 @@ class Settings:
         missing = [key for key, value in required.items() if not value]
 
         if missing:
-            raise RuntimeError(
-                f"Missing settings for LLM_PROVIDER={self.llm_provider}: "
-                + ", ".join(missing)
-            )
+            raise RuntimeError(f"Missing settings for LLM_PROVIDER={self.llm_provider}: " + ", ".join(missing))
 
 
 settings = Settings()

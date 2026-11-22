@@ -15,8 +15,7 @@ def respond(message, history):
 
         if sources:
             answer += "\n\n**Retrieved sources**\n" + "\n".join(
-                f"- **[{s['label']}] {s['title']}**"
-                + (f" (page ID: {s['page_id']})" if s["page_id"] else "")
+                f"- **[{s['label']}] {s['title']}**" + (f" (page ID: {s['page_id']})" if s["page_id"] else "")
                 for s in sources
             )
 

@@ -5,12 +5,15 @@ from langchain.schema import Document
 from langchain_openai import AzureChatOpenAI
 from pydantic import SecretStr
 
-from .config import settings
-from .indexing import open_vector_store
+from rag_assistant.config import settings
+from rag_assistant.indexing import open_vector_store
 
 SYSTEM_INSTRUCTIONS = """You are an expert assistant answering questions about a document collection.
 Use only the supplied CONTEXT. Do not rely on outside knowledge.
 If the context is insufficient, say you cannot determine the answer from the indexed documents.
+Address every part of the user's question by checking all provided context, not just the first one.
+Answer only the specific question asked. Be concise and direct, and omit unrelated policy details.
+Preserve exact numbers, timelines, and conditions from the context without reinterpreting or mixing them up.
 Do not invent facts or citations. Refer to source labels when making factual claims.
 If sources disagree, describe the disagreement and identify the relevant sources.
 
@@ -93,11 +96,7 @@ class KnowledgeAssistant:
 
         response = self.llm.invoke(build_prompt(question, docs))
 
-        answer = (
-            response.content
-            if isinstance(response.content, str)
-            else str(response.content)
-        )
+        answer = response.content if isinstance(response.content, str) else str(response.content)
 
         sources = []
         for i, doc in enumerate(docs, start=1):
@@ -105,11 +104,11 @@ class KnowledgeAssistant:
             sources.append(
                 {
                     "label": f"S{i}",
-                    "title": metadata.get("title")
-                    or metadata.get("source")
-                    or "Unknown source",
+                    "title": metadata.get("title") or metadata.get("source") or "Unknown source",
                     "page_id": metadata.get("id") or metadata.get("page_id", ""),
-                    "excerpt": doc.page_content[:500],
+                    # "excerpt": doc.page_content[:500],
+                    "content": doc.page_content,
                 }
             )
+
         return answer, sources
