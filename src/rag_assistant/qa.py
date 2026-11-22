@@ -63,6 +63,7 @@ def get_chat_model() -> Any:
             model=settings.ollama_model,
             base_url=settings.ollama_base_url,
             temperature=0,
+            keep_alive="5m",
         )
 
     return AzureChatOpenAI(
