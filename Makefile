@@ -38,7 +38,7 @@ check: ## Run CI checks (Ruff lint, format check, and pytest)
 	$(PYTEST) -v
 
 test: ## Run pytest
-	$(PYTEST) -v
+	$(PYTHON) -m pytest -v --cov --cov-report=term-missing --cov-fail-under=80
 
 index: ## Build/reset the vector index (override: make index SOURCE=confluence)
 	$(PYTHON) ingest.py --source $(SOURCE) --path $(DATA_PATH) --reset
