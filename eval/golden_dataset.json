@@ -1,0 +1,146 @@
+[
+  {
+    "question_id": "Q01",
+    "category": "direct_lookup",
+    "question": "How quickly does IT revoke access after an employee's last working day?",
+    "ground_truth": "IT removes all access within 24 hours after the employee's last working day.",
+    "expected_sources": ["access_management.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q02",
+    "category": "direct_lookup",
+    "question": "How long are security audit logs kept compared to regular application logs?",
+    "ground_truth": "Security audit logs are retained for 12 months, whereas application logs are retained for 90 days.",
+    "expected_sources": ["data_retention.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q03",
+    "category": "direct_lookup",
+    "question": "When is a customer's data deletion request considered fully completed?",
+    "ground_truth": "A deletion request is considered complete once the customer's data has also expired from all backups (which are kept for 35 days).",
+    "expected_sources": ["data_retention.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q04",
+    "category": "direct_lookup",
+    "question": "What are the code review requirements for changes to authentication or payment code?",
+    "ground_truth": "Security-sensitive changes such as authentication or payment code require two approving reviews, including one from a member of the security team.",
+    "expected_sources": ["engineering_standards.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q05",
+    "category": "direct_lookup",
+    "question": "What is the maximum hotel reimbursement rate per night and the deadline for submitting receipts?",
+    "ground_truth": "Hotel costs are reimbursed up to 150 EUR per night, and receipts must be submitted in the finance portal within 14 days of the expense.",
+    "expected_sources": ["expense_policy.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q06",
+    "category": "direct_lookup",
+    "question": "Who communicates with customers during a Severity 1 incident and how fast must the status page be updated?",
+    "ground_truth": "Customer communication is handled exclusively by the support lead (never engineers directly), and the status page must be updated within 15 minutes of a confirmed Severity 1 incident.",
+    "expected_sources": ["incident_response.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q07",
+    "category": "direct_lookup",
+    "question": "What is the deadline for writing a postmortem and which incident severities require one?",
+    "ground_truth": "A blameless postmortem must be written within five business days after every Severity 1 or Severity 2 incident.",
+    "expected_sources": ["incident_response.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q08",
+    "category": "direct_lookup",
+    "question": "Which mandatory trainings must new hires pass during their first two weeks and what is the minimum passing score?",
+    "ground_truth": "New employees must complete security awareness training and data protection training within the first two weeks and pass both with at least 80 percent.",
+    "expected_sources": ["onboarding.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q09",
+    "category": "direct_lookup",
+    "question": "What happens if the primary on-call engineer does not respond to an alert?",
+    "ground_truth": "The alert escalates to the secondary engineer after 15 minutes and then to the engineering manager.",
+    "expected_sources": ["oncall_handbook.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q10",
+    "category": "direct_lookup",
+    "question": "Can we deploy a regular release on Friday at 15:00?",
+    "ground_truth": "No, regular releases are not allowed on Fridays after 14:00 unless approved as an exception by the engineering manager.",
+    "expected_sources": ["release_process.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q11",
+    "category": "direct_lookup",
+    "question": "How does a hotfix differ from a standard release?",
+    "ground_truth": "A hotfix may skip the 24-hour staging period, though it still requires a completed code review and approvals from both the release manager and QA lead.",
+    "expected_sources": ["release_process.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q12",
+    "category": "direct_lookup",
+    "question": "How many days per year can an employee work from abroad, and when is HR approval required?",
+    "ground_truth": "Employees can work from abroad for up to 20 days per year in EU countries; working from non-EU countries requires approval from the HR department.",
+    "expected_sources": ["remote_work.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q13",
+    "category": "direct_lookup",
+    "question": "What must an employee do if their company laptop is stolen?",
+    "ground_truth": "They must report the lost or stolen device to the security officer within 1 hour, who then decides whether to wipe the device remotely.",
+    "expected_sources": ["security_policy.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q14",
+    "category": "multi_hop",
+    "question": "If I buy a 650 EUR ergonomic chair for my home office, how much exceeds the equipment allowance and who must approve the expense?",
+    "ground_truth": "The one-time home office equipment allowance is 300 EUR (leaving 350 EUR above the allowance). Because the 650 EUR expense is above 500 EUR, it requires approval from the department head.",
+    "expected_sources": ["remote_work.md", "expense_policy.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q15",
+    "category": "multi_hop",
+    "question": "What conditions are required for an employee to gain and keep production access?",
+    "ground_truth": "The employee must have completed their first 30 days, obtain approval from the security officer for a specific team and purpose, and hold a valid security awareness training certificate (which must be renewed every 12 months or privileged access is suspended).",
+    "expected_sources": ["access_management.md", "security_policy.md"],
+    "answerable": true
+  },
+  {
+    "question_id": "Q16",
+    "category": "unanswerable",
+    "question": "How many days of paid parental leave do new parents receive?",
+    "ground_truth": "Not covered in the provided documentation.",
+    "expected_sources": [],
+    "answerable": false
+  },
+  {
+    "question_id": "Q17",
+    "category": "unanswerable",
+    "question": "What is the company's annual budget for external conference attendance?",
+    "ground_truth": "Not covered in the provided documentation.",
+    "expected_sources": [],
+    "answerable": false
+  },
+  {
+    "question_id": "Q18",
+    "category": "unanswerable",
+    "question": "Which cloud provider hosts our production Kubernetes cluster?",
+    "ground_truth": "Not covered in the provided documentation.",
+    "expected_sources": [],
+    "answerable": false
+  }
+]
