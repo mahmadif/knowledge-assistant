@@ -50,5 +50,5 @@ eval: ## Run the RAG evaluation benchmark
 	$(PYTHON) eval/run_eval.py
 
 clean: ## Remove build, cache, and test artifacts
-	rm -rf build dist *.egg-info .pytest_cache .ruff_cache
+	rm -rf build dist *.egg-info .pytest_cache .ruff_cache .coverage .coverage.* htmlcov coverage.xml
 	find . -type d -name "__pycache__" -exec rm -rf {} +
